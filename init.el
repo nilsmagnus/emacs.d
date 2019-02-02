@@ -6,6 +6,8 @@
 ;; You may delete these explanatory comments.
 (package-initialize)
 
+(exec-path-from-shell-initialize)
+
 (when (>= emacs-major-version 24)
   (require 'package)
   (add-to-list
