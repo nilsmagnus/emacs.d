@@ -1,8 +1,3 @@
-;; load emacs 24's package system. Add MELPA repository.
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
 (package-initialize)
 
 ;; add go-autocomplete and stuff related to go-config
@@ -40,6 +35,7 @@
 
 (defun my-go-mode-hook()
   (local-set-key (kbd "C-c m") 'gofmt)
+  (local-set-key (kbd "M-,") 'pop-tag-mark)
   (local-set-key (kbd "M-.") 'godef-jump))
 
 (add-hook 'go-mode-hook 'my-go-mode-hook)
