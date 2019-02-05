@@ -1,5 +1,12 @@
 (package-initialize)
 
+;; backup config, tips from https://stackoverflow.com/questions/151945/how-do-i-control-how-emacs-makes-backup-files
+(setq backup-directory-alist `(("." . "~/.saves")))
+(setq backup-by-copying t)
+(setq delete-old-versions t
+  kept-new-versions 6
+  kept-old-versions 2
+  version-control t)
 
 ;; get path that is used from shell
 (when (memq window-system '(mac ns x))
