@@ -58,6 +58,8 @@
 ;; format go-code on save
 (add-hook 'before-save-hook #'go-save-hook)
 
+(add-hook 'go-mode-hook #'gorepl-mode)
+
 (when (>= emacs-major-version 24)
   (require 'package)
   (add-to-list
@@ -83,6 +85,7 @@
 ;; autocomplete for golang
 (require 'go-autocomplete)
 (require 'auto-complete-config)
+(require 'gorepl-mode)
 
 (ac-config-default)
 (custom-set-variables
@@ -92,7 +95,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (## flycheck-elm company go-mode flycheck-gometalinter flycheck-golangci-lint markdown-mode exec-path-from-shell go-imports go-eldoc elm-mode dockerfile-mode company-go auto-complete))))
+    (gorepl-mode ## flycheck-elm company go-mode flycheck-gometalinter flycheck-golangci-lint markdown-mode exec-path-from-shell go-imports go-eldoc elm-mode dockerfile-mode company-go auto-complete))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
