@@ -41,6 +41,8 @@
 ;; --- elm stuff end
 
 ;; --- golang stuff
+(require 'go-guru)
+(add-hook 'go-mode-hook #'go-guru-hl-identifier-mode)
 
 ;;  go-autocomplete and stuff related to go-config
 (add-to-list 'load-path "~/.emacs.d/gomacs/")
@@ -95,7 +97,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (gorepl-mode ## flycheck-elm company go-mode flycheck-gometalinter flycheck-golangci-lint markdown-mode exec-path-from-shell go-imports go-eldoc elm-mode dockerfile-mode company-go auto-complete))))
+    (go-guru gorepl-mode ## flycheck-elm company go-mode flycheck-gometalinter flycheck-golangci-lint markdown-mode exec-path-from-shell go-imports go-eldoc elm-mode dockerfile-mode company-go auto-complete))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
