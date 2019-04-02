@@ -8,10 +8,6 @@
   kept-old-versions 2
   version-control t)
 
-;; get path that is used from shell
-(when (memq window-system '(mac ns x))
-  (exec-path-from-shell-initialize)
-  )
 
 ;; enable flycheck for everything
 (add-hook 'after-init-hook #'global-flycheck-mode)
@@ -62,13 +58,7 @@
 
 (add-hook 'go-mode-hook #'gorepl-mode)
 
-(when (>= emacs-major-version 24)
-  (require 'package)
-  (add-to-list
-   'package-archives
-    ;;'("melpa" . "http://stable.melpa.org/packages/") ; many packages won't show if using stable
-      '("melpa" . "http://melpa.milkbox.net/packages/")
-   t))
+(require 'package)
 
 (setq package-archives '(
 		         ("melpa" . "https://melpa.org/packages/")))
@@ -85,6 +75,7 @@
 
 
 ;; autocomplete for golang
+					;
 (require 'go-autocomplete)
 (require 'auto-complete-config)
 (require 'gorepl-mode)
@@ -97,7 +88,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (go-guru gorepl-mode ## flycheck-elm company go-mode flycheck-gometalinter flycheck-golangci-lint markdown-mode exec-path-from-shell go-imports go-eldoc elm-mode dockerfile-mode company-go auto-complete))))
+    (flycheck go-guru gorepl-mode ## flycheck-elm company go-mode flycheck-gometalinter flycheck-golangci-lint markdown-mode exec-path-from-shell go-imports go-eldoc elm-mode dockerfile-mode company-go auto-complete))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
