@@ -33,11 +33,13 @@
 ;; GO - stuff
 
 (require 'yasnippet)
+(add-to-list 'yas-snippet-dirs "~/.emacs.d/yasnippet-go/")
+(yas-global-mode 1)
 (require 'lsp-mode)
 (require 'company-lsp)
 
 (add-hook 'go-mode-hook #'lsp)
-;;(require 'go-guru)
+(require 'go-guru)
 
 ;; autocompletion stuff
 ;;(add-to-list 'load-path "~/.emacs.d/autocomplete/")
@@ -50,12 +52,12 @@
 (setq gofmt-command "goimports")
 
 
-
-
 ;; function to format go-code
 (defun go-save-hook ()
   (when (eq major-mode 'go-mode)
-    (gofmt)))
+    (gofmt)
+    (gofmt)
+    ))
 
 ;; format go-code on save
 (add-hook 'before-save-hook #'go-save-hook)
@@ -64,7 +66,7 @@
 (defun my-go-mode-hook()
   (local-set-key (kbd "C-c m") 'lsp-format-buffer)
   (local-set-key (kbd "M-,") 'pop-tag-mark)
-  (local-set-key (kbd "M-.") 'godef-jump))
+  (local-set-key (kbd "M-.") 'lsp-find-definition))
 
 (add-hook 'go-mode-hook 'my-go-mode-hook)
 
