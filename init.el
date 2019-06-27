@@ -1,14 +1,14 @@
 (setq exec-path (append exec-path '("~/go/bin")))
 	       
 (setq inhibit-startup-screen t)
-(setq package-list '(go-guru go-mode markdown-mode exec-path-from-shell go-imports go-eldoc dockerfile-mode exec-path-from-shell company company-go))
+(setq package-list '(lsp-mode company-go company-lsp go-mode markdown-mode exec-path-from-shell go-imports go-eldoc dockerfile-mode yasnippet exec-path-from-shell))
 
 (require 'package)
 (add-to-list
    'package-archives
    ;;'("melpa" . "http://melpa.org/packages/") ; many packages won't show if using stable
-   ;;'("melpa" . "http://melpa.milkbox.net/packages/")
-   '("marmalade" . "http://marmalade-repo.org/packages/")
+   '("melpa" . "http://melpa.milkbox.net/packages/")
+   ;;'("marmalade" . "http://marmalade-repo.org/packages/")
    t)
 
 ; activate all the packages (in particular autoloads)
@@ -32,20 +32,23 @@
 
 ;; GO - stuff
 
+(require 'yasnippet)
+(require 'lsp-mode)
+(require 'company-lsp)
 
-(require 'go-guru)
+(add-hook 'go-mode-hook #'lsp)
+;;(require 'go-guru)
 
 ;; autocompletion stuff
-(add-to-list 'load-path "~/.emacs.d/autocomplete/")
-(require 'go-autocomplete)
-(require 'auto-complete-config)
-(ac-config-default)
+;;(add-to-list 'load-path "~/.emacs.d/autocomplete/")
+;;(require 'go-autocomplete)
+;;(require 'auto-complete-config)
+;;(ac-config-default)
 
 ;;(require 'go-repl-mode)
 
 (setq gofmt-command "goimports")
 
-(add-hook 'go-mode-hook #'go-guru-hl-identifier-mode)
 
 
 
@@ -59,7 +62,7 @@
 
 
 (defun my-go-mode-hook()
-  (local-set-key (kbd "C-c m") 'gofmt)
+  (local-set-key (kbd "C-c m") 'lsp-format-buffer)
   (local-set-key (kbd "M-,") 'pop-tag-mark)
   (local-set-key (kbd "M-.") 'godef-jump))
 
