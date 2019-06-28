@@ -1,0 +1,5 @@
+#name : switch .. { ... }
+# --
+switch $0 {
+case $1:
+}
