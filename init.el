@@ -1,7 +1,7 @@
 (setq exec-path (append exec-path '("~/go/bin")))
 	       
 (setq inhibit-startup-screen t)
-(setq package-list '(lsp-mode company-go company-lsp go-mode markdown-mode exec-path-from-shell go-imports go-eldoc dockerfile-mode yasnippet exec-path-from-shell))
+(setq package-list '(lsp-mode company-go company-lsp go-mode markdown-mode magit exec-path-from-shell go-imports go-eldoc dockerfile-mode yasnippet exec-path-from-shell))
 
 (require 'package)
 (add-to-list
@@ -29,6 +29,9 @@
   kept-new-versions 6
   kept-old-versions 2
   version-control t)
+
+;; MAGIT
+(global-set-key (kbd "C-x g") 'magit-status)
 
 ;; GO - stuff
 
