@@ -1,7 +1,7 @@
 (setq exec-path (append exec-path '("~/go/bin")))
 	       
 (setq inhibit-startup-screen t)
-(setq package-list '(lsp-mode company-go company-lsp go-mode markdown-mode magit exec-path-from-shell go-imports go-eldoc dockerfile-mode yasnippet exec-path-from-shell))
+(setq package-list '(lsp-mode lsp-ui company-go company-lsp go-mode markdown-mode magit exec-path-from-shell go-imports go-eldoc dockerfile-mode yasnippet exec-path-from-shell multiple-cursors zenburn-theme))
 
 (require 'package)
 (add-to-list
@@ -30,6 +30,16 @@
   kept-old-versions 2
   version-control t)
 
+;; dark theme
+(load-theme 'zenburn t)
+
+;; Multiple cursors
+(require 'multiple-cursors)
+(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+
 ;; MAGIT
 (global-set-key (kbd "C-x g") 'magit-status)
 
@@ -38,11 +48,18 @@
 (require 'yasnippet)
 (add-to-list 'yas-snippet-dirs "~/.emacs.d/yasnippet-go/")
 (yas-global-mode 1)
+
+; LSP related
 (require 'lsp-mode)
 (require 'company-lsp)
-
+(require 'lsp-ui)
+(add-hook 'lsp-mode-hook 'lsp-ui-mode)
 (add-hook 'go-mode-hook #'lsp)
-(require 'go-guru)
+(global-set-key (kbd "C-x r") 'lsp-rename)
+
+
+
+;;(require 'go-guru)
 
 ;; autocompletion stuff
 ;;(add-to-list 'load-path "~/.emacs.d/autocomplete/")
@@ -80,12 +97,17 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("a7051d761a713aaf5b893c90eaba27463c791cd75d7257d3a8e66b0c8c346e77" default)))
+ '(lsp-ui-peek-enable t)
  '(package-selected-packages
    (quote
-    (auto-complete-confi auto-complete-config go-autocomplete go-guru))))
+    (zenburn-theme multiple-cursors use-package magit auto-complete-confi auto-complete-config go-autocomplete))))
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(markdown-code-face ((t (:inherit consolas)))))
