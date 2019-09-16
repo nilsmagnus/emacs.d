@@ -30,7 +30,10 @@
   kept-old-versions 2
   version-control t)
 
-;; dark theme
+;; dark theme, zenburn
+;; set background-color to green of current variable in golang
+(setq zenburn-override-colors-alist
+      '(("zenburn-bg-05"  . "#339933")))
 (load-theme 'zenburn t)
 
 ;; Multiple cursors
