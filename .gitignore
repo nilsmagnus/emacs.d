@@ -2,3 +2,8 @@ elpa
 auto-save-list
 ac-comphist.dat
 *~
+.mc-lists.el
+session.*
+transient
+.lsp-session*
+network-security.data
