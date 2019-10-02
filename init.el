@@ -1,7 +1,9 @@
 (setq exec-path (append exec-path '("~/go/bin")))
-	       
+
+(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
+
 (setq inhibit-startup-screen t)
-(setq package-list '(lsp-mode lsp-ui company-go company-lsp go-mode markdown-mode magit exec-path-from-shell go-imports go-eldoc dockerfile-mode yasnippet exec-path-from-shell multiple-cursors zenburn-theme))
+(setq package-list '(lsp-mode lsp-ui elm-mode company-go company-lsp go-mode markdown-mode magit exec-path-from-shell go-imports go-eldoc dockerfile-mode yasnippet exec-path-from-shell multiple-cursors zenburn-theme))
 
 (require 'package)
 (add-to-list
@@ -46,8 +48,18 @@
 ;; MAGIT
 (global-set-key (kbd "C-x g") 'magit-status)
 
-;; GO - stuff
+;; ELM stuff
+;;(require 'elm-mode)
+(defun my-elm-mode-hook()
+  (setq elm-sort-imports-on-save t)
+  (setq elm-tags-on-save t)
+  )
+;; for some insane reason the following line cannot be inside a hook
+(setq elm-format-on-save t)
 
+(add-hook 'elm-mode-hook 'my-elm-mode-hook)
+
+;; GO - stuff
 (require 'yasnippet)
 (add-to-list 'yas-snippet-dirs "~/.emacs.d/yasnippet-go/")
 (yas-global-mode 1)
