@@ -1,16 +1,19 @@
 (setq exec-path (append exec-path '("~/go/bin")))
 
-(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
+;; if signature-check fails, consider to activate following line:
+;;(setq package-check-signature nil)
+
+;;(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
 
 (setq inhibit-startup-screen t)
-(setq package-list '(lsp-mode lsp-ui elm-mode company-go company-lsp go-mode markdown-mode magit exec-path-from-shell go-imports go-eldoc dockerfile-mode yasnippet exec-path-from-shell multiple-cursors zenburn-theme))
+(setq package-list '(lsp-mode lsp-ui elm-mode company-go company-lsp go-mode markdown-mode magit exec-path-from-shell go-imports go-eldoc dockerfile-mode yasnippet exec-path-from-shell multiple-cursors zenburn-theme cider))
 
 (require 'package)
 (add-to-list
    'package-archives
    ;;'("melpa" . "http://melpa.org/packages/") ; many packages won't show if using stable
-   '("melpa" . "http://melpa.milkbox.net/packages/")
-   ;;'("marmalade" . "http://marmalade-repo.org/packages/")
+   ;;'("melpa" . "http://melpa.milkbox.net/packages/")
+   '("marmalade" . "http://marmalade-repo.org/packages/")
    t)
 
 ; activate all the packages (in particular autoloads)
