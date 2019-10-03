@@ -62,6 +62,8 @@
 (setq elm-format-on-save t)
 
 (add-hook 'elm-mode-hook 'my-elm-mode-hook)
+(add-hook 'elm-mode-hook #'lsp)
+(setq lsp-elm-server-install-dir "/usr/local/bin/elm-language-server")
 
 ;; GO - stuff
 (require 'yasnippet)
@@ -122,7 +124,12 @@
  '(lsp-ui-peek-enable t)
  '(package-selected-packages
    (quote
-    (zenburn-theme multiple-cursors use-package magit auto-complete-confi auto-complete-config go-autocomplete))))
+    (zenburn-theme multiple-cursors use-package magit auto-complete-confi auto-complete-config go-autocomplete)))
+ '(safe-local-variable-values
+   (quote
+    ((elm-package-json . "elm.json")
+     (elm-compile-arguments "--output=elm.js" "--debug")
+     (elm-reactor-arguments "--port" "8000")))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
