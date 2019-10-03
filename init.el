@@ -56,6 +56,7 @@
 (defun my-elm-mode-hook()
   (setq elm-sort-imports-on-save t)
   (setq elm-tags-on-save t)
+  (setq tags-revert-without-query 1)
   )
 ;; for some insane reason the following line cannot be inside a hook
 (setq elm-format-on-save t)
