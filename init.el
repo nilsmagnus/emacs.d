@@ -65,6 +65,7 @@
 (add-hook 'elm-mode-hook #'lsp)
 (setq lsp-elm-server-install-dir "/usr/local/bin/elm-language-server")
 
+
 ;; GO - stuff
 (require 'yasnippet)
 (add-to-list 'yas-snippet-dirs "~/.emacs.d/yasnippet-go/")
@@ -127,7 +128,11 @@
     (zenburn-theme multiple-cursors use-package magit auto-complete-confi auto-complete-config go-autocomplete)))
  '(safe-local-variable-values
    (quote
-    ((elm-package-json . "elm.json")
+    ((elm-interactive-command  "elm" "repl")
+     (elm-reactor-command "elm" "reactor")
+     (elm-compile-command "elm" "make")
+     (elm-package-command "elm" "package")
+     (elm-package-json . "elm.json")
      (elm-compile-arguments "--output=elm.js" "--debug")
      (elm-reactor-arguments "--port" "8000")))))
 
