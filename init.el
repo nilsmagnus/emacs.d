@@ -6,7 +6,7 @@
 ;;(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
 
 (setq inhibit-startup-screen t)
-(setq package-list '(lsp-mode lsp-ui elm-mode company-go company-lsp go-mode markdown-mode magit exec-path-from-shell go-imports go-eldoc dockerfile-mode yasnippet exec-path-from-shell multiple-cursors zenburn-theme cider))
+(setq package-list '(lsp-mode lsp-ui elm-mode company-go company-lsp go-mode markdown-mode magit exec-path-from-shell go-imports go-eldoc dockerfile-mode yasnippet exec-path-from-shell multiple-cursors zenburn-theme cider yaml-mode))
 
 (require 'package)
 (add-to-list
@@ -35,6 +35,8 @@
   kept-old-versions 2
   version-control t)
 
+
+
 ;; dark theme, zenburn
 ;; set background-color to green of current variable in golang
 (setq zenburn-override-colors-alist
@@ -55,12 +57,12 @@
 ;;(require 'elm-mode)
 (defun my-elm-mode-hook()
   (setq elm-sort-imports-on-save t)
+  (setq elm-tags-exclude-elm-stuff nil)
   (setq elm-tags-on-save t)
   (setq tags-revert-without-query 1)
   )
 ;; for some insane reason the following line cannot be inside a hook
 (setq elm-format-on-save t)
-
 (add-hook 'elm-mode-hook 'my-elm-mode-hook)
 (add-hook 'elm-mode-hook #'lsp)
 (setq lsp-elm-server-install-dir "/usr/local/bin/elm-language-server")
@@ -125,10 +127,10 @@
  '(lsp-ui-peek-enable t)
  '(package-selected-packages
    (quote
-    (zenburn-theme multiple-cursors use-package magit auto-complete-confi auto-complete-config go-autocomplete)))
+    (yaml-mode zenburn-theme multiple-cursors use-package magit auto-complete-confi auto-complete-config go-autocomplete)))
  '(safe-local-variable-values
    (quote
-    ((elm-interactive-command  "elm" "repl")
+    ((elm-interactive-command "elm" "repl")
      (elm-reactor-command "elm" "reactor")
      (elm-compile-command "elm" "make")
      (elm-package-command "elm" "package")
