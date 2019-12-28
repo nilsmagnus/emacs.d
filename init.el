@@ -6,7 +6,7 @@
 ;;(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
 
 (setq inhibit-startup-screen t)
-(setq package-list '(lsp-mode lsp-ui elm-mode company-go company-lsp go-mode markdown-mode magit exec-path-from-shell go-imports go-eldoc dockerfile-mode yasnippet exec-path-from-shell multiple-cursors zenburn-theme cider yaml-mode))
+(setq package-list '(lsp-mode lsp-ui elm-mode company-go company-lsp go-mode markdown-mode magit exec-path-from-shell go-imports go-eldoc dockerfile-mode yasnippet exec-path-from-shell multiple-cursors zenburn-theme cider yaml-mode highlight-parentheses))
 
 (require 'package)
 (add-to-list
@@ -52,6 +52,14 @@
 
 ;; MAGIT
 (global-set-key (kbd "C-x g") 'magit-status)
+
+;; highlight parentheses for all
+
+(define-globalized-minor-mode global-highlight-parentheses-mode
+  highlight-parentheses-mode
+  (lambda ()
+    (highlight-parentheses-mode t)))
+(global-highlight-parentheses-mode t)
 
 ;; ELM stuff
 ;;(require 'elm-mode)
