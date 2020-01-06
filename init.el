@@ -138,7 +138,10 @@
     (yaml-mode zenburn-theme multiple-cursors use-package magit auto-complete-confi auto-complete-config go-autocomplete)))
  '(safe-local-variable-values
    (quote
-    ((elm-interactive-command "elm" "repl")
+    ((cider-figwheel-main-default-options . ":dev")
+     (cider-default-cljs-repl . figwheel-main)
+     (cider-clojure-cli-global-options . "-A:dev")
+     (elm-interactive-command "elm" "repl")
      (elm-reactor-command "elm" "reactor")
      (elm-compile-command "elm" "make")
      (elm-package-command "elm" "package")
