@@ -6,7 +6,7 @@
 ;;(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
 
 (setq inhibit-startup-screen t)
-(setq package-list '(lsp-mode lsp-ui elm-mode company-go company-lsp go-mode markdown-mode magit exec-path-from-shell go-imports go-eldoc dockerfile-mode yasnippet exec-path-from-shell multiple-cursors zenburn-theme cider yaml-mode highlight-parentheses))
+(setq package-list '(lsp-mode lsp-ui elm-mode company-go company-lsp go-mode markdown-mode magit exec-path-from-shell go-imports go-eldoc dockerfile-mode yasnippet exec-path-from-shell multiple-cursors zenburn-theme cider yaml-mode highlight-parentheses paredit))
 
 (require 'package)
 (add-to-list
@@ -35,7 +35,9 @@
   kept-old-versions 2
   version-control t)
 
-
+;; enlarge/shrink windows
+(global-set-key (kbd "S-C-a") 'shrink-window)
+(global-set-key (kbd "S-C-z") 'enlarge-window)
 
 ;; dark theme, zenburn
 ;; set background-color to green of current variable in golang
@@ -124,6 +126,9 @@
 
 ;; END GO 
 
+;; clojurescript
+(add-hook 'clojurescript-mode-hook 'paredit-mode)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -135,10 +140,13 @@
  '(lsp-ui-peek-enable t)
  '(package-selected-packages
    (quote
-    (yaml-mode zenburn-theme multiple-cursors use-package magit auto-complete-confi auto-complete-config go-autocomplete)))
+    (paredit yaml-mode zenburn-theme multiple-cursors use-package magit auto-complete-confi auto-complete-config go-autocomplete)))
  '(safe-local-variable-values
    (quote
-    ((elm-interactive-command "elm" "repl")
+    ((cider-figwheel-main-default-options . ":dev")
+     (cider-default-cljs-repl . figwheel-main)
+     (cider-clojure-cli-global-options . "-A:dev")
+     (elm-interactive-command "elm" "repl")
      (elm-reactor-command "elm" "reactor")
      (elm-compile-command "elm" "make")
      (elm-package-command "elm" "package")
