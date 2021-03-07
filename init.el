@@ -11,9 +11,8 @@
 (require 'package)
 (add-to-list
    'package-archives
-   ;;'("melpa" . "http://melpa.org/packages/") ; many packages won't show if using stable
+   '("melpa" . "http://melpa.org/packages/") ; many packages won't show if using stable
    ;;'("melpa" . "http://melpa.milkbox.net/packages/")
-   '("marmalade" . "http://marmalade-repo.org/packages/")
    t)
 
 ; activate all the packages (in particular autoloads)
@@ -135,15 +134,12 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
-   (quote
-    ("a7051d761a713aaf5b893c90eaba27463c791cd75d7257d3a8e66b0c8c346e77" default)))
+   '("a7051d761a713aaf5b893c90eaba27463c791cd75d7257d3a8e66b0c8c346e77" default))
  '(lsp-ui-peek-enable t)
  '(package-selected-packages
-   (quote
-    (paredit yaml-mode zenburn-theme multiple-cursors use-package magit auto-complete-confi auto-complete-config go-autocomplete)))
+   '(paredit yaml-mode zenburn-theme multiple-cursors use-package magit auto-complete-confi auto-complete-config go-autocomplete))
  '(safe-local-variable-values
-   (quote
-    ((cider-figwheel-main-default-options . ":dev")
+   '((cider-figwheel-main-default-options . ":dev")
      (cider-default-cljs-repl . figwheel-main)
      (cider-clojure-cli-global-options . "-A:dev")
      (elm-interactive-command "elm" "repl")
@@ -152,7 +148,7 @@
      (elm-package-command "elm" "package")
      (elm-package-json . "elm.json")
      (elm-compile-arguments "--output=elm.js" "--debug")
-     (elm-reactor-arguments "--port" "8000")))))
+     (elm-reactor-arguments "--port" "8000"))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
